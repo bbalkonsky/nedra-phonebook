@@ -2,7 +2,8 @@ module.exports = {
     publicPath: process.env.NODE_ENV === 'production' ? '/tel/' : '/',
     pwa: {
         name: 'phonebook',
-        start_url: './tel/',
+        scope: 'newspaper-dev.gp-ggr.ru/tel/',
+        start_url: 'newspaper-dev.gp-ggr.ru/tel/',
         themeColor: '#007bc1',
         msTileColor: '#006198',
         manifestOptions: {
