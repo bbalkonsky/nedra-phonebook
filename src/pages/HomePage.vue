@@ -28,11 +28,10 @@
 </template>
 
 <script>
-    import DepartmentsTab from "@/components/DepartmentsTab";
-    import PeopleTab from "@/components/PeopleTab";
+    import DepartmentsTab from "@/pages/UnitsTab";
+    import PeopleTab from "@/pages/StaffTab";
     import LeftPanelComponent from "@/components/LeftPanelComponent";
     import NavbarComponent from "@/components/NavbarComponent";
-
     import {f7Page, f7Link, f7Tab, f7Tabs, f7Toolbar} from 'framework7-vue';
 
     export default {
@@ -43,9 +42,6 @@
             DepartmentsTab,
             PeopleTab,
             LeftPanelComponent
-        },
-        mounted() {
-
         }
     }
 </script>

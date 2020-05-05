@@ -11,7 +11,18 @@ module.exports = {
         },
         workboxPluginMode: 'GenerateSW',
         workboxOptions: {
-            skipWaiting: true
+            skipWaiting: true,
+            // runtimeCaching: [{
+            //     urlPattern: new RegExp('^https://newspaper-dev.gp-ggr.ru/api/'),
+            //     handler: 'staleWhileRevalidate',
+            //     options: {
+            //         // networkTimeoutSeconds: 10,
+            //         cacheName: 'api-cache',
+            //         cacheableResponse: {
+            //             statuses: [0, 200],
+            //         },
+            //     },
+            // }]
         }
     }
 };

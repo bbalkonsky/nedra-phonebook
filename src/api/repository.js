@@ -2,25 +2,23 @@
 
 import axios from 'axios';
 
-const baseDomain = 'https://newspaper-dev.gp-ggr.ru/phonebook/';
-const baseUrl = `${baseDomain}/api`;
+const baseDomain = 'https://newspaper-dev.gp-ggr.ru';
+const baseUrl = `${baseDomain}/phonebook`;
+const config = {
+    headers: {
+        Authorization: "Bearer " + (localStorage.jwtToken ? localStorage.getItem('jwtToken') : '')
+    }
+};
+
 
 export default {
     login(username, password) {
         return axios.post(`${baseUrl}/auth/login`, {username, password})
     },
-
-    getRelease() {
-        return axios.get(`${baseUrl}/release`);
+    getUnits() {
+        return axios.get(`${baseUrl}/worker/structure`, config);
     },
-    getReleaseById(articleId) {
-        return axios.get(`${baseUrl}/release/${articleId}`);
+    getStaff() {
+        return axios.get(`${baseUrl}/worker`, config);
     },
-
-    getArticles() {
-        return axios.get(`${baseUrl}/article`);
-    },
-    getArticleById(articleId) {
-        return axios.get(`${baseUrl}/article/${articleId}`);
-    }
 }

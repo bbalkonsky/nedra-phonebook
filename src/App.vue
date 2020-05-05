@@ -3,55 +3,43 @@
 
         <f7-view class="main-view" main :url="isUserAuthorized ? '/' : '/login/'"></f7-view>
 
-        <employee-page></employee-page>
+        <person-page></person-page>
 
         <div id="popup-anchor"></div>
     </f7-app>
 </template>
 
 <script>
-    import FoundPeolplePage from "@/components/FoundPeolplePage";
-    import EmployeePage from "@/components/EmployeePage";
-    import LoginPage from "@/components/LoginPage";
-    import HomePage from "@/components/HomePage";
-
+    import PersonPage from "@/pages/PersonPage";
     import { f7App, f7View } from 'framework7-vue';
+    import routes from "@/js/routes";
 
     export default {
         name: 'App',
         components: {
             f7App, f7View,
-            EmployeePage,
+            PersonPage,
         },
         data() {
             return {
+                isUserAuthorized: false,
                 f7params: {
                     name: 'Телефонный справочник',
                     id: 'com.myapp.phones',
-                    routes: [
-                        {
-                            path: '/',
-                            component: HomePage
-                        },
-                        {
-                            path: '/foundPeople/:id/',
-                            component: FoundPeolplePage
-                        },
-                        {
-                            path: '/login/',
-                            component: LoginPage
-                        }
-                    ]
+                    routes: routes
                 },
             }
         },
         created() {
+            if (localStorage.jwtToken && localStorage.jwtToken.length) {
+                this.isUserAuthorized = true;
+            }
             if (localStorage.isDarkTheme) {
                 this.$store.commit('themeSwitch', JSON.parse(localStorage.getItem('isDarkTheme')));
             }
-            if (localStorage.isUserAuthorized) {
-                this.$store.commit('loginUser', JSON.parse(localStorage.getItem('isUserAuthorized')));
-            }
+            // if (localStorage.isUserAuthorized) {
+            //     this.$store.commit('loginUser', JSON.parse(localStorage.getItem('isUserAuthorized')));
+            // }
         },
         mounted() {
             // this.$f7.popover.open('.popover-sw');
@@ -99,9 +87,9 @@
             }
         },
         computed: {
-            isUserAuthorized() {
-                return this.$store.state.isUserAuthorized;
-            },
+            // isUserAuthorized() {
+            //     return this.$store.state.isUserAuthorized;
+            // },
             isDarkThemeActive() {
                 return this.$store.state.isDarkThemeActive;
             }
