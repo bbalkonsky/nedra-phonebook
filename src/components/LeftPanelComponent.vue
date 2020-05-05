@@ -31,7 +31,7 @@
                 this.$store.commit('themeSwitch', isDarkTheme);
             },
             logoutHandler() {
-                this.$store.commit('loginUser', false);
+                localStorage.removeItem('jwtToken');
                 this.$f7router.navigate('/login/');
             }
         },

@@ -1,10 +1,10 @@
 <template>
-  <f7-page name="found-people-page">
+  <f7-page name="unit-staff-page">
     <f7-navbar back-link="Назад" style="z-index: 999;"> <!-- TODO чот мне кажется это ппц-->
       <f7-nav-title>Подразделение</f7-nav-title>
     </f7-navbar>
 
-    <f7-list contacts-list>
+    <f7-list class="unit-staff-list">
       <f7-list-item
               link="#"
               v-for="person in staff"
@@ -50,5 +50,8 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+  .unit-staff-list {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
 </style>

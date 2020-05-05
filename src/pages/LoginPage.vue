@@ -49,7 +49,6 @@
                     localStorage.jwtToken = response.data.accessToken;
                     this.$f7router.navigate('/');
                 } catch(err) {
-                    console.log(err.response);
                     if (err.response.status === 401) {
                         this.openErrorDialog(`Имя пользователя или пароль указаны неверно`);
                     } else {
@@ -58,27 +57,6 @@
 
                 }
                 this.closeWaitingDialog();
-
-                // this.$store.dispatch('authorization', {
-                //     username: self.username,
-                //     password: self.password
-                // }).then(() => {
-                //     this.$f7router.navigate('/');
-                // }).catch(() => {
-                //     this.$f7.dialog.alert(`Имя пользователя или пароль указаны неверно`, '', () => {
-                //     });
-                // }).finally(() => {
-                //     this.closeWaitingDialog();
-                // });
-
-
-                // const self = this;
-                // const app = self.$f7;
-                // const router = self.$routerf7;
-                // app.dialog.alert(`Username: ${self.username}<br>Password: ${self.password}`, () => {
-                //     this.$store.commit('authorizeUser', true);
-                //     router.navigate('/');
-                // });
             },
             openWaitingDialog() {
                 this.$f7.dialog.preloader('Пожалуйста, подождите...');

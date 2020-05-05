@@ -9,7 +9,7 @@
         ></f7-list-index>
 
         <f7-list contacts-list>
-            <f7-list-group v-for="(value, key) in employees" :key="key">
+            <f7-list-group v-for="(value, key) in staff" :key="key">
                 <f7-list-item :title="key" group-title></f7-list-item>
                 <f7-list-item
                         link="#"
@@ -31,7 +31,7 @@
             f7Page, f7ListIndex, f7List, f7ListGroup, f7ListItem
         },
         props: {
-            employees: Object
+            staff: Object
         },
         created() {
 

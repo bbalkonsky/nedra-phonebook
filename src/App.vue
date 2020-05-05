@@ -30,6 +30,11 @@
                 },
             }
         },
+        methods: {
+            onReloadPageClicked() {
+                document.location.reload();
+            }
+        },
         created() {
             if (localStorage.jwtToken && localStorage.jwtToken.length) {
                 this.isUserAuthorized = true;
@@ -37,21 +42,30 @@
             if (localStorage.isDarkTheme) {
                 this.$store.commit('themeSwitch', JSON.parse(localStorage.getItem('isDarkTheme')));
             }
-            // if (localStorage.isUserAuthorized) {
-            //     this.$store.commit('loginUser', JSON.parse(localStorage.getItem('isUserAuthorized')));
-            // }
         },
         mounted() {
+            window.addEventListener('load', function () {
+                window.history.pushState({}, '')
+            });
+            //
+            window.addEventListener('popstate', function () {
+                window.history.pushState({}, '')
+            });
+
             // this.$f7.popover.open('.popover-sw');
 
             document.getElementById('framework7-root').addEventListener("swWasUpdated", () => {
                 this.$f7.dialog.create({
                     title: 'Внимание!',
-                    text: 'Приложение было обновлено, необходимо выполнить перезагрузку!',
+                    text: 'Приложение было обновлено. \nЧтобы изменения вступили в силу необходимо выполнить перезагрузку!',
                     cssClass: 'service-worker-dialog',
                     buttons: [
                         {
                             text: 'OK'
+                        },
+                        {
+                            text: 'Перезагрузить',
+                            onClick: this.onReloadPageClicked
                         }
                     ]
                 }).open()
@@ -65,7 +79,7 @@
             // });
 
             document.getElementById('framework7-root').addEventListener("swWasErrored", () => {
-                this.$f7.dialog.create({
+                this.$f7.dialog.create({ //TODO переделать на toast
                     title: 'Не удалось установить приложение. Попробуйте обновить страницу',
                     buttons: [{text: 'OK'}]
                 }).open()
@@ -82,14 +96,12 @@
                                 ', а затем <img src="./img/add.png"/></p>\n' +
                                 '</div>'})
                             .open();
+
                     }
                 });
             }
         },
         computed: {
-            // isUserAuthorized() {
-            //     return this.$store.state.isUserAuthorized;
-            // },
             isDarkThemeActive() {
                 return this.$store.state.isDarkThemeActive;
             }

@@ -33,22 +33,10 @@
             <template v-if="person.telephoneNumber || person.ipPhone || person.mobile || person.facsimileTelephoneNumber || person.mail">
                 <f7-block-title>Контакты</f7-block-title>
                 <f7-list>
-<!--                    <f7-list-item-->
-<!--                            v-for="phone in person.phones"-->
-<!--                            :key="phone.number"-->
-<!--                            :external="phone.type !== 'Газовый'"-->
-<!--                            :link="phone.type !== 'Газовый' ? 'tel:' + phone.number : null"-->
-<!--                            :title="phone.number"-->
-<!--                            :footer="phone.type">-->
-<!--                        <f7-icon v-if="phone.type === 'Мобильный'" slot="media" ios="f7:device_phone_portrait" aurora="f7:device_phone_portrait" md="material:stay_current_portrait"></f7-icon>-->
-<!--                        <f7-icon v-else-if="phone.type === 'Городской'" slot="media" ios="f7:phone_fill" aurora="f7:phone_fill" md="material:phone"></f7-icon>-->
-<!--                        <f7-icon v-else slot="media" ios="f7:phone" aurora="f7:phone" md="material:local_gas_station"></f7-icon>-->
-<!--                    </f7-list-item>-->
-
                     <f7-list-item
                             v-if="person.mobile"
                             :external="true"
-                            :link="person.mobile"
+                            :link="'tel:' + person.mobile"
                             :title="person.mobile"
                             :footer="'Мобильный'">
                         <f7-icon slot="media" ios="f7:device_phone_portrait" aurora="f7:device_phone_portrait" md="material:stay_current_portrait"></f7-icon>
@@ -56,7 +44,7 @@
                     <f7-list-item
                             v-if="person.telephoneNumber"
                             :external="true"
-                            :link="person.telephoneNumber"
+                            :link="'tel:' + person.telephoneNumber"
                             :title="person.telephoneNumber"
                             :footer="'Городской'">
                         <f7-icon slot="media" ios="f7:phone_fill" aurora="f7:phone_fill" md="material:phone"></f7-icon>

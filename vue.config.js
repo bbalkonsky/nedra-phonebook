@@ -5,24 +5,24 @@ module.exports = {
         msTileColor: '#006198',
         manifestOptions: {
             name: 'Телефонный справочник «Газпром недра»',
-            short_name: 'Справочник 2.0',
+            short_name: 'Справочник',
             background_color: '#007bc1',
             display: 'standalone'
         },
         workboxPluginMode: 'GenerateSW',
         workboxOptions: {
             skipWaiting: true,
-            // runtimeCaching: [{
-            //     urlPattern: new RegExp('^https://newspaper-dev.gp-ggr.ru/api/'),
-            //     handler: 'staleWhileRevalidate',
-            //     options: {
-            //         // networkTimeoutSeconds: 10,
-            //         cacheName: 'api-cache',
-            //         cacheableResponse: {
-            //             statuses: [0, 200],
-            //         },
-            //     },
-            // }]
+            runtimeCaching: [{
+                urlPattern: new RegExp('^https://newspaper-dev.gp-ggr.ru/phonebook/'),
+                handler: 'staleWhileRevalidate',
+                options: {
+                    // networkTimeoutSeconds: 10,
+                    cacheName: 'api-cache',
+                    cacheableResponse: {
+                        statuses: [0, 200],
+                    },
+                },
+            }]
         }
     }
 };
