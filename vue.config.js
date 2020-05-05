@@ -2,6 +2,7 @@ module.exports = {
     publicPath: process.env.NODE_ENV === 'production' ? '/tel/' : '/',
     pwa: {
         name: 'phonebook',
+        start_url: './tel/',
         themeColor: '#007bc1',
         msTileColor: '#006198',
         manifestOptions: {
