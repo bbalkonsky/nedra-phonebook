@@ -1,5 +1,5 @@
 <template>
-    <f7-page>
+    <f7-page ptr @ptr:refresh="loadMore">
         <f7-list v-if="departments.length" class="departments-list">
             <unit-item-component :departments="departments"/>
             <f7-list-item class="searchbar-not-found" title="Nothing found"></f7-list-item>
