@@ -1,5 +1,5 @@
 <template>
-    <f7-page>
+    <f7-page ptr @ptr:refresh="loadMore">
         <f7-list-index
                 indexes="auto"
                 list-el=".list.contacts-list"
