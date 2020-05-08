@@ -1,12 +1,12 @@
 <template>
     <span>
-        <ul v-for="department in departments" :key="department.name">
-            <f7-list-item :link="`/foundPeople/${department.name}/`" @click="popupOpened = true">
-                {{department.name}}
+        <ul v-for="unit in units" :key="unit.name">
+            <f7-list-item :link="`/foundPeople/${unit.name}/`" @click="popupOpened = true">
+                {{unit.name}}
             </f7-list-item>
-            <li v-if="department.subDepartments && department.subDepartments.length">
+            <li v-if="unit.subDepartments && unit.subDepartments.length">
                 <ul>
-                    <unit-item-component :departments="department.subDepartments"></unit-item-component>
+                    <unit-item-component :units="unit.subDepartments"></unit-item-component>
                 </ul>
             </li>
         </ul>
@@ -22,7 +22,7 @@
             f7ListItem
         },
         props: {
-            departments: {}
+            units: {}
         }
     }
 </script>

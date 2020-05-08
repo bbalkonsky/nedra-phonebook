@@ -1,11 +1,16 @@
 <template>
     <f7-popup class="employee-popup" :opened="popupOpened" @popup:closed="closeClickedHandler()">
         <f7-page>
-            <f7-navbar :title="person.cn">
+            <f7-navbar :title="'Карточка'">
                 <f7-nav-right>
                     <f7-link popup-close>Закрыть</f7-link>
                 </f7-nav-right>
             </f7-navbar>
+
+            <f7-block-title>Работник</f7-block-title>
+            <f7-list>
+                <f7-list-item>{{person.cn}}</f7-list-item>
+            </f7-list>
 
             <f7-block-title>Орг. структура</f7-block-title>
             <f7-list>

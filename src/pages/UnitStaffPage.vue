@@ -10,8 +10,8 @@
               v-for="person in staff"
               :title="person.cn"
               :footer="person.title"
-              :key="person.cn"
-              @click="onItemClickHandler(person.cn)"></f7-list-item>
+              :key="person.id"
+              @click="onItemClickHandler(person.id)"></f7-list-item>
     </f7-list>
 
   </f7-page>

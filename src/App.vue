@@ -78,12 +78,12 @@
             //     }).open()
             // });
 
-            document.getElementById('framework7-root').addEventListener("swWasErrored", () => {
-                this.$f7.dialog.create({ //TODO переделать на toast
-                    title: 'Не удалось установить приложение. Попробуйте обновить страницу',
-                    buttons: [{text: 'OK'}]
-                }).open()
-            });
+            // document.getElementById('framework7-root').addEventListener("swWasErrored", () => {
+            //     this.$f7.dialog.create({ //TODO переделать на toast
+            //         title: 'Не удалось установить приложение. Попробуйте обновить страницу',
+            //         buttons: [{text: 'OK'}]
+            //     }).open()
+            // });
 
             if (this.$f7.device.ios) {
                 document.getElementById('framework7-root').addEventListener("swWasInstalled", () => {

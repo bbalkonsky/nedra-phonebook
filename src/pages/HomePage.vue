@@ -1,17 +1,17 @@
 <template>
     <f7-page :page-content="false">
 
-        <navbar-component></navbar-component>
+<!--        <navbar-component></navbar-component>-->
 
         <f7-toolbar tabbar bottom>
             <f7-link tab-link="#tab-1" icon-ios="f7:briefcase_fill" icon-aurora="f7:briefcase_fill" icon-md="material:work" tab-link-active></f7-link>
-            <f7-link tab-link="#tab-2" icon-ios="f7:person_circle_fill" icon-aurora="f7:person_circle_fill" icon-md="material:person"></f7-link>
+            <f7-link tab-link="#tab-2" icon-ios="f7:person_circle_fill" icon-aurora="f7:person_circle_fill" icon-md="material:person" ></f7-link>
         </f7-toolbar>
         <f7-tabs>
             <f7-tab id="tab-1" class="page-content" tab-active>
                 <departments-tab></departments-tab>
             </f7-tab>
-            <f7-tab id="tab-2" class="page-content">
+            <f7-tab id="tab-2" class="page-content" >
                 <people-tab></people-tab>
             </f7-tab>
         </f7-tabs>
@@ -38,6 +38,7 @@
         name: "HomePage",
         components: {
             f7Page, f7Link, f7Tabs, f7Tab, f7Toolbar,
+            // eslint-disable-next-line vue/no-unused-components
             NavbarComponent,
             DepartmentsTab,
             PeopleTab,

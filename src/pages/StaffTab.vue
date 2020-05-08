@@ -1,6 +1,6 @@
 <template>
     <f7-page>
-        <sorted-staff-component v-if="Object.keys(groupedStaff).length" :staff="groupedStaff" />
+        <sorted-staff-component v-if="this.$store.state.staff.length" :staff="orderedStaff" />
 
         <f7-block v-else class="row align-items-stretch text-align-center" >
             <f7-col>
@@ -19,7 +19,7 @@
         name: "StaffTab",
         components: {f7Page, f7Block, f7Col, f7Preloader, SortedStaffComponent},
         computed: {
-            groupedStaff() {
+            orderedStaff() {
                 return this.$store.getters.groupedStaff
             }
         },

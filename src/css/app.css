@@ -18,7 +18,7 @@
   padding-left: 8px;
 }
 
-.departments-list {
+.units-list {
   margin-top: 0;
   margin-bottom: 0;
 }
@@ -34,4 +34,11 @@
 .popover .block {
   margin-top: 16px;
   margin-bottom: 16px;
+}
+
+.page-content .searchbar:not(.searchbar-inline) input[type=search] {
+  border-radius: 8px;
+}
+.page-content .searchbar-units:not(.searchbar-inline) input[type=search] {
+  border-radius: 8px;
 }

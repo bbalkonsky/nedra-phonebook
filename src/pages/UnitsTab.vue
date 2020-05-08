@@ -1,11 +1,31 @@
 <template>
     <f7-page>
-        <f7-list v-if="departments.length" class="departments-list">
-            <unit-item-component :departments="departments"/>
+        <f7-navbar>
+            <f7-nav-left>
+                <f7-link icon-ios="f7:menu" icon-aurora="f7:menu" icon-md="material:menu" panel-open="left"></f7-link>
+            </f7-nav-left>
+
+            <f7-searchbar
+                    class="searchbar-units"
+                    search-container=".units-list"
+                    search-in=".item-content"
+                    :disable-button="!$theme.aurora"
+                    disable-button-text="Отмена"
+                    placeholder="Поиск"
+                    :clear-button="false"
+                    expandable
+            ></f7-searchbar>
+            <f7-nav-right>
+                <f7-link class="searchbar-enable" data-searchbar=".searchbar-units" icon-ios="f7:search" icon-aurora="f7:search" icon-md="material:search"></f7-link>
+            </f7-nav-right>
+        </f7-navbar>
+
+        <f7-list class="units-list">
+            <unit-item-component v-if="units.length" :units="units"/>
             <f7-list-item class="searchbar-not-found" title="Nothing found"></f7-list-item>
         </f7-list>
 
-        <f7-block v-else class="row align-items-stretch text-align-center">
+        <f7-block v-if="!units.length" class="row align-items-stretch text-align-center">
             <f7-col>
                 <f7-preloader :size="42"></f7-preloader>
             </f7-col>
@@ -16,17 +36,17 @@
 
 <script>
     import UnitItemComponent from "@/components/UnitItemComponent";
-    import {f7Page, f7List, f7ListItem, f7Block, f7Col, f7Preloader} from 'framework7-vue';
+    import {f7Page, f7List, f7ListItem, f7Block, f7Col, f7Preloader, f7Navbar, f7NavLeft, f7Link, f7Searchbar, f7NavRight} from 'framework7-vue';
     import repository from "@/api/repository";
 
     export default {
         name: "UnitTab",
         components: {
-            f7Page, f7List, f7ListItem, f7Block, f7Col, f7Preloader,
+            f7Page, f7List, f7ListItem, f7Block, f7Col, f7Preloader, f7Navbar, f7NavLeft, f7Link, f7Searchbar, f7NavRight,
             UnitItemComponent
         },
         computed: {
-            departments() {
+            units() {
                 return this.$store.state.units
             },
         },
@@ -47,5 +67,8 @@
 </script>
 
 <style scoped>
-
+    .page-content .searchbar-units:not(.searchbar-inline) {
+        margin: auto;
+        width: 100%;
+    }
 </style>

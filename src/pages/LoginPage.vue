@@ -50,7 +50,6 @@
                 // const self = this;
                 try {
                     const response = await repository.login(this.username, this.password);
-                    console.log(response)
                     localStorage.jwtToken = response.data.accessToken;
                     this.$f7router.navigate('/');
                 } catch(err) {
