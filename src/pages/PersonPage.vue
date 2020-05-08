@@ -21,13 +21,13 @@
                     <f7-icon slot="media" ios="f7:briefcase_fill" aurora="f7:briefcase_fill" md="material:work"></f7-icon>
                 </f7-list-item>
                 <f7-list-item v-if="person.division" header="Управление" :title="person.division">
-                    <f7-icon slot="media" ios="f7:briefcase_fill" aurora="f7:briefcase_fill" md="material:work"></f7-icon>
+                    <f7-icon slot="media" ios="f7:" aurora="f7:" md="material:"></f7-icon>
                 </f7-list-item>
                 <f7-list-item v-if="person.departmentNumber" header="Отдел" :title="person.departmentNumber">
-                    <f7-icon slot="media" ios="f7:briefcase_fill" aurora="f7:briefcase_fill" md="material:work"></f7-icon>
+                    <f7-icon slot="media" ios="f7:" aurora="f7:" md="material:"></f7-icon>
                 </f7-list-item>
                 <f7-list-item v-if="person.description" header="Группа" :title="person.description">
-                    <f7-icon slot="media" ios="f7:briefcase_fill" aurora="f7:briefcase_fill" md="material:work"></f7-icon>
+                    <f7-icon slot="media" ios="f7:" aurora="f7:" md="material:"></f7-icon>
                 </f7-list-item>
 
                 <f7-list-item header="Должность" :title="person.title">

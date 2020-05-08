@@ -12,7 +12,6 @@
                     </f7-list-item>
 
                     <f7-list-button title="Выйти" color="red" panel-close="left" outline @click="logoutHandler()"></f7-list-button>
-                    <f7-list-button title="Обновить" @click="updateData()" />
                 </f7-list>
             </f7-page>
         </f7-view>
@@ -21,8 +20,7 @@
 
 <script>
     import { f7Page, f7Panel, f7ListItem, f7List, f7Toggle, f7View, f7BlockTitle, f7Icon, f7ListButton } from 'framework7-vue';
-    import repository from "@/api/repository";
-    
+
     export default {
         name: "LeftPanelComponent",
         components: {
@@ -35,14 +33,6 @@
             logoutHandler() {
                 localStorage.removeItem('jwtToken');
                 this.$f7router.navigate('/login/');
-            },
-            updateData() {
-                repository.getUnits().then(response => {
-                    this.$store.commit('unitsResponse', response.data);
-                });
-                repository.getStaff().then(response => {
-                    this.$store.commit('staffResponse', response.data);
-                });
             }
         },
         computed: {
