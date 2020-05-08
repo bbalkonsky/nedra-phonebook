@@ -7,30 +7,27 @@
                 </f7-nav-right>
             </f7-navbar>
 
-            <f7-block-title>Работник</f7-block-title>
-            <f7-list>
-                <f7-list-item>{{person.cn}}</f7-list-item>
-            </f7-list>
+            <f7-block-title class="person-name" medium>{{person.cn}}</f7-block-title>
 
             <f7-block-title>Орг. структура</f7-block-title>
             <f7-list>
-                <f7-list-item v-if="person.l" header="Город" :title="person.l">
+                <f7-list-item v-if="person.l" :title="person.l">
                     <f7-icon slot="media" ios="f7:building_2_fill" aurora="f7:building_2_fill" md="f7:building_2_fill"></f7-icon>
                 </f7-list-item>
-                <f7-list-item v-if="person.company" header="Организцация" :title="person.company">
+                <f7-list-item v-if="person.company" :title="person.company">
                     <f7-icon slot="media" ios="f7:briefcase_fill" aurora="f7:briefcase_fill" md="material:work"></f7-icon>
                 </f7-list-item>
-                <f7-list-item v-if="person.division" header="Управление" :title="person.division">
+                <f7-list-item v-if="person.division" :title="person.division">
                     <f7-icon slot="media" ios="f7:" aurora="f7:" md="material:"></f7-icon>
                 </f7-list-item>
-                <f7-list-item v-if="person.departmentNumber" header="Отдел" :title="person.departmentNumber">
+                <f7-list-item v-if="person.departmentNumber" :title="person.departmentNumber">
                     <f7-icon slot="media" ios="f7:" aurora="f7:" md="material:"></f7-icon>
                 </f7-list-item>
-                <f7-list-item v-if="person.description" header="Группа" :title="person.description">
+                <f7-list-item v-if="person.description" :title="person.description">
                     <f7-icon slot="media" ios="f7:" aurora="f7:" md="material:"></f7-icon>
                 </f7-list-item>
 
-                <f7-list-item header="Должность" :title="person.title">
+                <f7-list-item footer="Должность" :title="person.title">
                     <f7-icon slot="media" ios="f7:person_circle_fill" aurora="f7:person_circle_fill" md="material:person"></f7-icon>
                 </f7-list-item>
             </f7-list>
@@ -102,5 +99,8 @@
 </script>
 
 <style scoped>
-
+    .person-name {
+        overflow: visible;
+        white-space: normal;
+    }
 </style>
