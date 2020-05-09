@@ -2,7 +2,7 @@
 
 import axios from 'axios';
 
-const baseDomain = 'https://newspaper-dev.gp-ggr.ru';
+const baseDomain = 'https://tel-dev.gp-ggr.ru';
 const baseUrl = `${baseDomain}/phonebook`;
 const config = {
     headers: {
