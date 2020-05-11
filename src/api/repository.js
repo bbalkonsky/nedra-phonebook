@@ -4,9 +4,12 @@ import axios from 'axios';
 
 const baseDomain = 'https://tel-dev.gp-ggr.ru';
 const baseUrl = `${baseDomain}/phonebook`;
-const config = {
-    headers: {
-        Authorization: "Bearer " + (localStorage.jwtToken ? localStorage.getItem('jwtToken') : '')
+
+const config = function(token) {
+    return {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
     }
 };
 
@@ -15,10 +18,10 @@ export default {
     login(username, password) {
         return axios.post(`${baseUrl}/auth/login`, {username, password})
     },
-    getUnits() {
-        return axios.get(`${baseUrl}/worker/structure`, config);
+    getUnits(token) {
+        return axios.get(`${baseUrl}/worker/structure`, config(token));
     },
-    getStaff() {
-        return axios.get(`${baseUrl}/worker`, config);
+    getStaff(token) {
+        return axios.get(`${baseUrl}/worker`, config(token));
     },
 }

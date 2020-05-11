@@ -23,10 +23,24 @@
                 return this.$store.getters.groupedStaff
             }
         },
-        created() {
-            repository.getStaff().then(response => {
+        async mounted() {
+            // repository.getStaff().then(response => {
+            //     this.$store.commit('staffResponse', response.data);
+            // })
+
+            try {
+                const token = await localStorage.jwtToken ? localStorage.getItem('jwtToken') : '';
+                const response = await repository.getStaff(token);
                 this.$store.commit('staffResponse', response.data);
-            })
+            } catch(err) {
+                if (err.response.status === 401) {
+                    localStorage.removeItem('jwtToken');
+                    this.$f7router.navigate('/login/');
+                } else {
+                    this.openErrorDialog(`Упс! Что-то пошло не так!\nПопробуйте снова`);
+                }
+            }
+
         }
     }
 </script>

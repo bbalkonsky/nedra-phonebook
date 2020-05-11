@@ -59,9 +59,23 @@
             }
         },
         created() {
-            repository.getUnits().then(response => {
+            // repository.getUnits().then(response => {
+            //     this.$store.commit('unitsResponse', response.data);
+            // });
+        },
+        async mounted() {
+            try {
+                const token = await localStorage.jwtToken ? localStorage.getItem('jwtToken') : '';
+                const response = await repository.getUnits(token);
                 this.$store.commit('unitsResponse', response.data);
-            });
+            } catch(err) {
+                if (err.response.status === 401) {
+                    localStorage.removeItem('jwtToken');
+                    this.$f7router.navigate('/login/');
+                } else {
+                    this.openErrorDialog(`Упс! Что-то пошло не так!\nПопробуйте снова`);
+                }
+            }
         }
     }
 </script>

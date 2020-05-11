@@ -16,7 +16,7 @@ module.exports = {
         workboxOptions: {
             skipWaiting: true,
             runtimeCaching: [{
-                urlPattern: new RegExp('^https://newspaper-dev.gp-ggr.ru/phonebook/'),
+                urlPattern: new RegExp('^https://tel-dev.gp-ggr.ru/phonebook/'),
                 handler: 'staleWhileRevalidate',
                 options: {
                     // networkTimeoutSeconds: 10,

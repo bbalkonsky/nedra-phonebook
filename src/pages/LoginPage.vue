@@ -18,7 +18,7 @@
             ></f7-list-input>
         </f7-list>
         <f7-list>
-            <f7-list-button @click="signIn">Войти</f7-list-button>
+            <f7-list-button disabled @click="signIn">Войти</f7-list-button>
             <f7-block-footer>
                 <span>Доступ к приложению можно получить заполнив заявку на корпоративном портале.</span>
                 <br>
@@ -40,27 +40,30 @@
         },
         data() {
             return {
-                username: 'string',
-                password: 'string',
+                username: '',
+                password: '',
             };
         },
         methods: {
             async signIn() {
-                this.openWaitingDialog();
-                // const self = this;
-                try {
-                    const response = await repository.login(this.username, this.password);
-                    localStorage.jwtToken = response.data.accessToken;
-                    this.$f7router.navigate('/');
-                } catch(err) {
-                    if (err.response.status === 401) {
-                        this.openErrorDialog(`Имя пользователя или пароль указаны неверно`);
-                    } else {
-                        this.openErrorDialog(`Упс! Что-то пошло не так!\nПопробуйте снова`);
+                if (this.username.length && this.password.length) {
+                    this.openWaitingDialog();
+                    try {
+                        const response = await repository.login(this.username, this.password);
+                        localStorage.jwtToken = response.data.accessToken;
+                        this.$f7router.navigate('/');
+                    } catch(err) {
+                        if (err.response.status === 401) {
+                            this.openErrorDialog(`Имя пользователя или пароль указаны неверно`);
+                        } else {
+                            this.openErrorDialog(`Что-то пошло не так!\nПопробуйте снова`);
+                        }
                     }
-
+                    this.closeWaitingDialog();
+                } else {
+                    this.openErrorDialog(`Введите имя пользователя и пароль`);
                 }
-                this.closeWaitingDialog();
+
             },
             openWaitingDialog() {
                 this.$f7.dialog.preloader('Пожалуйста, подождите...');
@@ -75,7 +78,7 @@
                 }).open();
                 setTimeout(function () {
                     dialog.close();
-                }, 2000);
+                }, 1000);
             }
         },
     };
