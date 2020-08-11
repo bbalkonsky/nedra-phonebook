@@ -1,4 +1,5 @@
 # nedra-phonebook
+Progressive web application (PWA) for the web version of the Gazprom Nedra phonebook
 
 ## Project setup
 ```
